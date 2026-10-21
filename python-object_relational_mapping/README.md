@@ -80,6 +80,7 @@ $ ./1-filter_states.py root root hbtn_0e_0_usa
 | `0-select_states.sql` | Creates the `hbtn_0e_0_usa` database and the `states` table with sample data |
 | `0-select_states.py` | Lists all states from `hbtn_0e_0_usa`, sorted by `states.id`, using `MySQLdb` |
 | `1-filter_states.py` | Lists states whose name starts with `N` (uppercase), sorted by `states.id`, using `MySQLdb` |
+| `2-my_filter_states.py` | Displays states matching the name given as argument, using `format` to build the query |
 
 ## Notes
 
