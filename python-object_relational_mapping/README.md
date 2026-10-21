@@ -9,6 +9,7 @@ database rows as Python objects.
 
 - Connect to a MySQL server from a Python script
 - Run SQL queries with a cursor and read the results
+- Filter and sort results with `WHERE`, `LIKE`, and `ORDER BY`
 - Protect queries against SQL injection
 - Understand what an ORM is and why it is useful
 - Map a Python class to a table with SQLAlchemy
@@ -38,7 +39,7 @@ pip install mysqlclient SQLAlchemy pycodestyle
 ## Database Setup
 
 Each task ships with an SQL file that creates its database and data.
-For task 0:
+For tasks 0 and 1:
 
 ```bash
 cat 0-select_states.sql | sudo mysql
@@ -47,13 +48,13 @@ cat 0-select_states.sql | sudo mysql
 ## Usage
 
 All scripts take three arguments: MySQL username, MySQL password, and
-database name.
+database name. Usernames and passwords are case sensitive.
 
 ```bash
-./0-select_states.py <mysql username> <mysql password> <database name>
+./<script>.py <mysql username> <mysql password> <database name>
 ```
 
-Example:
+### Task 0 - Get all states
 
 ```bash
 $ ./0-select_states.py root root hbtn_0e_0_usa
@@ -64,24 +65,34 @@ $ ./0-select_states.py root root hbtn_0e_0_usa
 (5, 'Nevada')
 ```
 
+### Task 1 - Filter states
+
+```bash
+$ ./1-filter_states.py root root hbtn_0e_0_usa
+(4, 'New York')
+(5, 'Nevada')
+```
+
 ## Files
 
 | File | Description |
 |------|-------------|
 | `0-select_states.sql` | Creates the `hbtn_0e_0_usa` database and the `states` table with sample data |
 | `0-select_states.py` | Lists all states from `hbtn_0e_0_usa`, sorted by `states.id`, using `MySQLdb` |
+| `1-filter_states.py` | Lists states whose name starts with `N` (uppercase), sorted by `states.id`, using `MySQLdb` |
 
 ## Notes
 
 - Scripts connect to a MySQL server on `localhost`, port `3306`.
+- `LIKE BINARY` is used in task 1 so the match is case sensitive.
 - Queries that include user input must use `%s` placeholders instead of
   string concatenation.
 - Check style with:
 
 ```bash
-pycodestyle 0-select_states.py
+pycodestyle 0-select_states.py 1-filter_states.py
 ```
 
 ## Author
 
-Holberton School student. Replace this line with abdulrhman saleh alduqil d7ome989
+Abdulrhman Saleh Alduqil - [d7ome989](https://github.com/d7ome989)
