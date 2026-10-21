@@ -10,7 +10,7 @@ database rows as Python objects.
 - Connect to a MySQL server from a Python script
 - Run SQL queries with a cursor and read the results
 - Filter and sort results with `WHERE`, `LIKE`, and `ORDER BY`
-- Protect queries against SQL injection
+- Understand how SQL injection works and how to prevent it
 - Understand what an ORM is and why it is useful
 - Map a Python class to a table with SQLAlchemy
 
@@ -39,7 +39,7 @@ pip install mysqlclient SQLAlchemy pycodestyle
 ## Database Setup
 
 Each task ships with an SQL file that creates its database and data.
-For tasks 0 and 1:
+For tasks 0 to 3:
 
 ```bash
 cat 0-select_states.sql | sudo mysql
@@ -48,7 +48,8 @@ cat 0-select_states.sql | sudo mysql
 ## Usage
 
 All scripts take three arguments: MySQL username, MySQL password, and
-database name. Usernames and passwords are case sensitive.
+database name. Tasks 2 and 3 take a fourth argument: the state name to
+search. Usernames and passwords are case sensitive.
 
 ```bash
 ./<script>.py <mysql username> <mysql password> <database name>
@@ -73,25 +74,43 @@ $ ./1-filter_states.py root root hbtn_0e_0_usa
 (5, 'Nevada')
 ```
 
+### Task 2 - Filter states by user input
+
+```bash
+$ ./2-my_filter_states.py root root hbtn_0e_0_usa 'Arizona'
+(2, 'Arizona')
+```
+
+### Task 3 - SQL injection safe version
+
+```bash
+$ ./3-my_safe_filter_states.py root root hbtn_0e_0_usa 'Arizona'
+(2, 'Arizona')
+```
+
 ## Files
 
 | File | Description |
 |------|-------------|
 | `0-select_states.sql` | Creates the `hbtn_0e_0_usa` database and the `states` table with sample data |
 | `0-select_states.py` | Lists all states from `hbtn_0e_0_usa`, sorted by `states.id`, using `MySQLdb` |
-| `1-filter_states.py` | Lists states whose name starts with `N` (uppercase), sorted by `states.id`, using `MySQLdb` |
-| `2-my_filter_states.py` | Displays states matching the name given as argument, using `format` to build the query |
+| `1-filter_states.py` | Lists states whose name starts with `N` (uppercase), sorted by `states.id` |
+| `2-my_filter_states.py` | Displays states matching the name given as argument, building the query with `format` (vulnerable to SQL injection, for learning only) |
+| `3-my_safe_filter_states.py` | Same as task 2, but safe from SQL injection using a `%s` placeholder and a parameter tuple |
 
 ## Notes
 
 - Scripts connect to a MySQL server on `localhost`, port `3306`.
-- `LIKE BINARY` is used in task 1 so the match is case sensitive.
-- Queries that include user input must use `%s` placeholders instead of
-  string concatenation.
+- `LIKE BINARY` is used so the match is case sensitive.
+- Task 2 builds the query with `format`, so an input such as
+  `x' OR '1'='1` returns every row. Never do this in real code.
+- Task 3 passes the value separately: `cur.execute(query, (value,))`.
+  The same input is treated as plain text and returns nothing.
 - Check style with:
 
 ```bash
-pycodestyle 0-select_states.py 1-filter_states.py
+pycodestyle 0-select_states.py 1-filter_states.py \
+    2-my_filter_states.py 3-my_safe_filter_states.py
 ```
 
 ## Author
