@@ -101,6 +101,8 @@ $ ./3-my_safe_filter_states.py root root hbtn_0e_0_usa 'Arizona'
 | `5-filter_cities.py` | Lists the cities of a state given as argument, safe from SQL injection |
 | `model_state.py` | Defines the `State` class mapped to the `states` table with SQLAlchemy |
 | `6-model_state.py` | Creates the `states` table in the database from the `State` model |
+| `7-model_state_fetch_all.py` | Lists all `State` objects from the database using SQLAlchemy |
+
 
 ## Notes
 
