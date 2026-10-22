@@ -210,6 +210,9 @@ $ ./7-model_state_fetch_all.py root root hbtn_0e_6_usa
 | `11-model_state_insert.py` | Adds the state `Louisiana` and prints its new id |
 | `12-model_state_update_id_2.py` | Changes the name of the `State` with `id = 2` to `New Mexico` |
 | `13-model_state_delete_a.py` | Deletes all `State` objects whose name contains the letter `a` |
+| `model_city.py` | Defines the `City` class mapped to the `cities` table, with a foreign key to `states.id` |
+| `14-model_city_fetch_by_state.sql` | Creates `hbtn_0e_14_usa` with the `states` and `cities` tables and sample data |
+| `14-model_city_fetch_by_state.py` | Prints all `City` objects with their state name, sorted by `cities.id` |
 
 ## Notes
 
