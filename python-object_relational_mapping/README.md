@@ -102,6 +102,8 @@ $ ./3-my_safe_filter_states.py root root hbtn_0e_0_usa 'Arizona'
 | `model_state.py` | Defines the `State` class mapped to the `states` table with SQLAlchemy |
 | `6-model_state.py` | Creates the `states` table in the database from the `State` model |
 | `7-model_state_fetch_all.py` | Lists all `State` objects from the database using SQLAlchemy |
+| `8-model_state_fetch_first.py` | Prints the first `State` object, or `Nothing` if the table is empty |
+| `9-model_state_filter_a.py` | Lists all `State` objects whose name contains the letter `a` |
 
 
 ## Notes
