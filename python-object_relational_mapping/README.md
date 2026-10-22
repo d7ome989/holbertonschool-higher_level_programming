@@ -209,6 +209,7 @@ $ ./7-model_state_fetch_all.py root root hbtn_0e_6_usa
 | `10-model_state_my_get.py` | Prints the id of the state whose name is given, or `Not found` |
 | `11-model_state_insert.py` | Adds the state `Louisiana` and prints its new id |
 | `12-model_state_update_id_2.py` | Changes the name of the `State` with `id = 2` to `New Mexico` |
+| `13-model_state_delete_a.py` | Deletes all `State` objects whose name contains the letter `a` |
 
 ## Notes
 
