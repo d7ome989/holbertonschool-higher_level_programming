@@ -97,6 +97,8 @@ $ ./3-my_safe_filter_states.py root root hbtn_0e_0_usa 'Arizona'
 | `1-filter_states.py` | Lists states whose name starts with `N` (uppercase), sorted by `states.id` |
 | `2-my_filter_states.py` | Displays states matching the name given as argument, building the query with `format` (vulnerable to SQL injection, for learning only) |
 | `3-my_safe_filter_states.py` | Same as task 2, but safe from SQL injection using a `%s` placeholder and a parameter tuple |
+| `4-cities_by_state.py` | Lists all cities with their state names using a `JOIN`, sorted by `cities.id` |
+| `5-filter_cities.py` | Lists the cities of a state given as argument, safe from SQL injection |
 
 ## Notes
 
